@@ -1,4 +1,7 @@
 /* Css for View/header.php */
+a {
+	text-decoration: none !important;
+}
 .none-dec {
 	text-decoration: none;
 }
@@ -198,7 +201,11 @@ footer {
 	margin: auto;
 	font-family: arial;
 	padding: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
+}
+
+.formname {
+	text-align: center;
 }
 
 /* Css for view/thanhtoan.php */

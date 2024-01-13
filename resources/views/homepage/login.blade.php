@@ -3,19 +3,21 @@
     <div class="col-md-4 col-md-offset-4 login">
         <form action="" method="post" role="form">
             @csrf
+            <legend class="formname">Đăng nhập</legend>
             <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label class="form-label">Mật Khẩu</label>
+            <input type="password" class="form-control" name="password">
             </div>
             <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Remember login</label>
+            <input type="checkbox" class="form-check-input">
+            <label class="form-check-label">Ghi nhớ đăng nhập</label>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+            <a href="{{ route('register') }}">Đăng kí</a>
         </form>
     </div>
 @endsection

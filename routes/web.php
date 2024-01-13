@@ -18,10 +18,15 @@ use App\Http\Controllers\HomeController;
 // Home Route
 Route::prefix('')->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    // Login
+    Route::get('/login', [HomeController::class, 'login'])->name('login');
+    Route::post('/login', [HomeController::class, 'check_login']);
+    // Register
+    Route::get('/register', [HomeController::class, 'register'])->name('register');
+    Route::post('/register', [HomeController::class, 'check_register']);
 });
 
-Route::get('/login', [HomeController::class, 'login'])->name('login');
-
+// Admin Route
 Route::group(['prefix' => 'admin'], function(){
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/categories', [AdminController::class, 'categories'])->name('admin.categories');
