@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +29,10 @@ Route::prefix('')->group(function() {
 });
 
 // Admin Route
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/categories', [AdminController::class, 'categories'])->name('admin.categories');
+    Route::resources([
+        'category' => CategoryController::class,
+        'product' => ProductController::class,
+    ]);
 });

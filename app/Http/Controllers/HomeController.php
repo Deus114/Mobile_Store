@@ -17,10 +17,15 @@ class HomeController extends Controller
 
     public function check_login() {
         request()->validate([
-            'email'=>'required|email|exist:users',
+            'email'=>'required|email|exists:users',
             'password'=>'required',
         ]);
         $data = request()->all('email', 'password');
+        if(auth()->attempt($data)){
+            return redirect()->route('admin.index');
+        }
+        
+        return redirect()->back();
     }
 
     public function register() {
