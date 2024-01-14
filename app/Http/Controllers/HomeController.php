@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,10 @@ class HomeController extends Controller
     }
 
     public function check_login() {
+        request()->validate([
+            'email'=>'required|email|exist:users',
+            'password'=>'required',
+        ]);
         $data = request()->all('email', 'password');
     }
 
@@ -24,7 +29,14 @@ class HomeController extends Controller
 
     public function check_register() {
         request()->validate([
+            'name'=>'required',
+            'email'=>'required|email|unique:users',
+            'password'=>'required',
+            'repassword'=>'required|same:password',
         ]);
-        $data = request()->all('email', 'password');
+        $data = request()->all('name', 'email');
+        $data['password'] = bcrypt(request('password'));
+        User::create($data);
+        return redirect()->route('login');
     }
 }

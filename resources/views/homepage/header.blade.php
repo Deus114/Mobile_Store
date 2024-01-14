@@ -23,10 +23,10 @@
                 <li class="nav-item"> <a class="nav-link white" href="index.php?act=tintuc">Tin tức</a> </li>
                 <li class="nav-item"> <a class="nav-link white" href="index.php?act=sanpham">Sản phẩm</a> </li>
                 <li class="nav-item"> 
-                <a class="nav-link white" href="index.php?act=login">Đăng nhập</a>
+                <a class="nav-link white" href="{{ route('login') }}">Đăng nhập</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link white" href="index.php?act=signup">Đăng Kí</a>
+                <a class="nav-link white" href="{{ route('register') }}">Đăng Kí</a>
                 </li>
                 <li class="nav-item"><a class="nav-link white" href="index.php?act=cart">Giỏ hàng</a> </li>
               </ul>
