@@ -19,9 +19,9 @@
         </label>
 
         <nav class="heading">
-            <a href="index.php" style="--i:0;">Homepage</a> 
-            <a href="index.php?act=danhmucsanpham" style="--i:1;">Category</a> 
-            <a href="index.php?act=product" style="--i:2;">Products</a> 
+            <a href="{{ route('admin.index') }}" style="--i:0;">Homepage</a> 
+            <a href="{{ route('category.index') }}" style="--i:1;">Category</a> 
+            <a href="{{ route('product.index') }}" style="--i:2;">Products</a> 
             <a href="index.php?act=binhluan" style="--i:3;">Comments</a> 
             <a href="index.php?act=footer" style="--i:4;">Footer</a>
             <a href="index.php?act=quanlitaikhoan" style="--i:5;">Accounts</a> 
