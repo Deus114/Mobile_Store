@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,8 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id', 'DESC')->paginate(50);
-
+        $products = Product::orderBy('id', 'DESC')->paginate(10);
         return view('admin.product.index', compact('products'));
     }
 
@@ -22,7 +22,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $cats = Category::orderBy('id', 'DESC')->select('id', 'name')->get();
+        return view('admin.product.create', compact('cats'));
     }
 
     /**
@@ -30,7 +31,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:4|max:150|unique:products',
+            'price' => 'required|numeric',
+            'image' => 'required|mimes:jpg,jpeg,png,gif',
+            'category_id' => 'required'
+        ]);
+        
+        $data = $request->only('name','price','content','description','category_id');
+        $imagename = $request->image->hashName();
+        $data['image'] = $imagename;
+        if(Product::create($data)) {
+            $request->image->move(public_path('uploads/products'),$imagename);
+            return redirect()->route('product.index')->with('ok','Thêm sản phẩm mới thành công');
+        }
+
+        return redirect()->route('product.create')->with('no','Thêm sản phẩm không thành công');
     }
 
     /**

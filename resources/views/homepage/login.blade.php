@@ -14,6 +14,9 @@
             <div class="mb-3">
                 <label class="form-label">Mật Khẩu</label>
                 <input type="password" class="form-control" name="password">
+                @if(session()->has('erro'))
+                    <span class="errtext">{{ session('erro')}}</span>
+                @endif
                 @error('password')
                     <span class="errtext">{{ $message }}</span>
                 @enderror

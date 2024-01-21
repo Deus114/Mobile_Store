@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 </head>
 <body>
-    <div class="container">
+  <header>
         <!-- Begin Nav -->
         <nav class="navbar navbar-expand-lg navbar-light bg-red"> 
-            <h1 class="tile white">Mobile Store</h1>
+            <h1 class="tile white nav-content">Mobile Store</h1>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"> <a class="nav-link white" href="index.php">Trang chủ</a> </li>
+                <li class="nav-item active"> <a class="nav-link white" href="{{ route('home') }}">Trang chủ</a> </li>
                 <li class="nav-item"> <a class="nav-link white" href="#info">Liên hệ</a> </li>
                 <li class="nav-item"> <a class="nav-link white" href="#info">Giới thiệu</a> </li>
                 <li class="nav-item"> <a class="nav-link white" href="index.php?act=tintuc">Tin tức</a> </li>
@@ -33,3 +33,6 @@
             </div>
         </nav>
         <!-- End Nav -->
+  </header>
+        
+        <div class="container">

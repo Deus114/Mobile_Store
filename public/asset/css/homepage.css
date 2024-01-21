@@ -10,6 +10,13 @@ a {
     width: 100%;
 }
 
+body {
+    min-height: 100vh;
+    background-color: rgb(185, 223, 235);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
 .white {
 	color: white !important;
 }
@@ -37,6 +44,10 @@ footer {
 	color: red;
 }
 
+.nav-content {
+	margin-left: 15%;
+}
+
 /* footer */
 .fcontainer {
 	display: flex;
@@ -54,10 +65,10 @@ footer {
 
 
 footer {
-	text-align: center;
-	padding: 10px;
-	background-color: #222;
-	color: white;
+    background-color: #ccc;
+    margin-top: 50px;
+    padding: 20px;
+    min-height: 50px;
 }
 
 /* Css for view/signup */
