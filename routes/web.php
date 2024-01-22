@@ -26,6 +26,8 @@ Route::prefix('')->group(function() {
     // Register
     Route::get('/register', [HomeController::class, 'register'])->name('register');
     Route::post('/register', [HomeController::class, 'check_register']);
+    // Detail
+    Route::get('/detail/{product}', [HomeController::class, 'detail'])->name('home.detail');
 });
 
 // Admin Route

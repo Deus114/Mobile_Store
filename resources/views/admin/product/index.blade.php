@@ -36,7 +36,7 @@
                     <td>
                         <img src="/uploads/products/{{ $item -> image }}" alt="{{ $item -> name }}" width="60">
                     </td>
-                    <td>{{ $item -> price }}</td>
+                    <td>{{ number_format($item -> price) }}đ</td>
                     <td>{{ $item -> content }}</td>
                     <td>{{ $item -> description }}</td>
                     <td>{{ $item->cat->name }}</td>
@@ -46,8 +46,9 @@
                     <td>
                         <form action="{{ route('product.destroy', $item->id) }}" method="post">
                             @csrf @method('DELETE')
+                            <br>
                             <a href="{{ route('product.edit', $item->id) }}" class="btn btn-sm btn-warning">Sửa</a>
-                            <button class="btn btn-sm btn-danger">Xóa</button>
+                            <button class="btn btn-sm btn-danger" onclick="return confirm('Bạn có muốn xóa {{ $item->name }}')">Xóa</button>
                         </form>
                     </td>
                 </tr>

@@ -13,7 +13,12 @@ class HomeController extends Controller
     public function index() {
         $cats = Category::orderBy('name', 'ASC')->get();
         $products = Product::orderBy('id', 'DESC')->limit(6)->get();
-        return view('homepage.home');
+        return view('homepage.home', compact('cats', 'products'));
+    }
+
+    public function detail(Product $product) {
+        $cats = Category::orderBy('name', 'ASC')->get();
+        return view('homepage.detail', compact('cats', 'product'));
     }
     
     public function login() {
