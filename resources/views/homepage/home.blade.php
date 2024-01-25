@@ -55,7 +55,8 @@
                     <div><img src="/uploads/sliders/slider1.jpg" alt="Image 1" width="100%"></div>
                     <div><img src="/uploads/sliders/slider2.jpg" alt="Image 2" width="100%"></div>
                 </div>
-            </div> <br>
+            </div> 
+            <br>
             <h4>SẢN PHẨM NỔI BẬT</h4>
             @php
                 $count=0;        
