@@ -12,8 +12,9 @@ class HomeController extends Controller
 {
     public function index() {
         $cats = Category::orderBy('name', 'ASC')->get();
-        $products = Product::orderBy('id', 'DESC')->limit(6)->get();
-        return view('homepage.home', compact('cats', 'products'));
+        $buys = Product::orderBy('buy', 'DESC')->limit(5)->get();
+        $products = Product::orderBy('id', 'DESC')->limit(8)->get();
+        return view('homepage.home', compact('cats', 'products', 'buys'));
     }
 
     public function detail(Product $product) {
