@@ -2,12 +2,12 @@
 @section('content')
     <div class="display">
         <div class="row">
-            <aside class="col-sm-3">
-                <h3>Danh mục sản phẩm</h3>
+            <aside class="col-sm-3 cat">
+                <h3 class="asi">DANH MỤC SẢN PHẨM</h3>
                 <ul class="list-group">
                     @foreach ($cats as $item)
                         @if ($item->status == 1)
-                        <li class="list-group-item"><a href="" class="text-decoration-none">{{ $item->name }}</a></li>
+                        <li class="list-group-item"><a href="" class="ellipsis">{{ $item->name }}</a></li>
                         @endif
                     @endforeach
                 </ul>
@@ -30,7 +30,7 @@
                         <p>{{ $product->content }}</p>
                         <form action="" method="post">
                             <input type="hidden" name="idsp" value="">
-                            <input class=" buy btn btn-primary respo" type="submit" name="addcart" value="Thêm vào giỏ hàng">
+                            <input class=" btn btn-danger respo" type="submit" name="addcart" value="Thêm giỏ hàng">
                         </form>
                     </div>
                 </div>

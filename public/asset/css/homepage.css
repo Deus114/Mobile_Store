@@ -1,4 +1,8 @@
 /* Css for View/header.php */
+*{
+	font-family: "Poppins", sans-serif !important;
+}
+
 a {
 	text-decoration: none !important;
 }
@@ -15,19 +19,20 @@ body {
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
+	background-color: rgb(251, 249, 249) !important;
 }
 
 .white {
 	color: white !important;
 }
 
-.bg-red {
-	background-color: rgb(238, 9, 9) !important;
+.bg-blue {
+	background-color: rgb(50, 50, 239) !important;
 }
 
-.tile{
-	margin-left: 5%;
-	padding-right: 5%;
+.logo{
+	margin-left: 10% !important;
+	margin-right: 7%;
 }
 
 footer {
@@ -36,8 +41,9 @@ footer {
     padding: 20px;
 }
 
-.sear {
-	margin-right: 5%;
+.search {
+	margin-right: 4%;
+	width: 30%;
 }
 
 .errtext {
@@ -48,6 +54,14 @@ footer {
 	margin-left: 15%;
 }
 
+.btn-search {
+	background-color: black !important;
+	color: white !important;
+}
+
+.sear {
+	border-radius: 0 !important;
+}
 /* footer */
 .fcontainer {
 	display: flex;
@@ -79,11 +93,28 @@ footer {
 	font-family: arial;
 	padding: 10px;
     margin-top: 20px;
+	background-color: white;
 }
 
 /* Css for hompage/home*/
+.slick-prev {
+    left: -10px !important;
+    background-color: #ccc !important;
+    padding: 1px 0px !important;
+	border-radius: 10px;
+}
+
+.slick-next {
+	right: -10px !important;
+    background-color: #ccc !important;
+    padding: 1px 0px !important;
+	border-radius: 10px;
+}
+
 .content {
 	margin-top: 20px !important;
+	margin-left: 4% !important;
+	width: 100% !important;
 }
 
 aside h3 {
@@ -98,35 +129,62 @@ aside h3 {
 .card {
 	margin-bottom: 20px;
 	text-align: center;
-	border: none;
-	transition: all 0.5s;
+	border: none !important;
+	padding-top: 10px;
+	margin: 3% 1%;
+	width: 22% !important;
 }
 
-.card:hover {
-	background-color: #ccc;
+.prdimg:hover {
+	opacity: 0.7;
+	width: 105%;
 }
 
 .homeprd {
-	margin-left: 5%;
-}
-
-.add {
-	text-decoration: none;
-	color: black;
+	margin-left: 2%;
+	width: 75% !important;
 }
 
 .res {
-	width: 80% !important;
+	width: 70% !important;
+	font-size: 13px !important;
+	text-align: center !important;
 }
 
-.product {
-	padding: 12px;
+.ellipsis {
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	color: #000;
+	font-weight: 500;
+}
+
+.ellipsis:hover {
+	color: blue;
+}
+
+.cat {
+	width: 20% !important;
+}
+
+.asi {
+	background-color: rgb(71, 71, 251);
+	border: none;
+	border-radius: 0 !important;
+	padding: 10px;
+	color: white;
+}
+
+.sellprd {
+	font-size: 10px;
+}
+
+.sellprdbtn {
+	font-size: 10px !important;
+	width: 90%;
 }
 
 /* Css for homepage/detail */
-.buy {
-	margin-left: 30%;
-}
 
 .img-fluid{
 	width: 80%;
@@ -164,5 +222,7 @@ aside h3 {
 }
 
 .respo{
-	width: 40% !important;
+	width: 30% !important;
+	text-align: center;
+	margin-left: 32%;
 }
