@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
   <header>
@@ -20,24 +21,43 @@
             <img class="nav-content logo" src="/uploads/logo/logo.png" alt="Mobile Store" width="5%">
             <form class="d-flex search">
               <input class="form-control me-2 sear" type="search" placeholder="Tìm kiếm" aria-label="Search">
-              <button class="btn btn-search" type="submit">Search</button>
+              <button class="btn btn-search" type="submit"><i class="bi bi-search"></i></button>
             </form>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> 
               <span class="navbar-toggler-icon"></span> 
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto">
-                <li class="nav-item active"> <a class="nav-link white" href="{{ route('home') }}">Trang chủ</a> </li>
-                <li class="nav-item"> <a class="nav-link white" href="#info">Liên hệ</a> </li>
-                <li class="nav-item"> <a class="nav-link white" href="#info">Giới thiệu</a> </li>
-                <li class="nav-item"> <a class="nav-link white" href="index.php?act=tintuc">Tin tức</a> </li>
                 <li class="nav-item"> 
-                <a class="nav-link white" href="{{ route('login') }}">Đăng nhập</a>
+                <a class="nav-link white" href="{{ route('login') }}"><i class="bi bi-person-fill"></i> Đăng nhập</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link white" href="{{ route('register') }}">Đăng Kí</a>
+                <a class="nav-link white" href="{{ route('register') }}"><i class="bi bi-pencil-square"></i> Đăng Kí</a>
                 </li>
-                <li class="nav-item"><a class="nav-link white" href="index.php?act=cart">Giỏ hàng</a> </li>
+                <li class="nav-item"><a class="nav-link white" href="index.php?act=cart"><i class="bi bi-cart3"></i> Giỏ hàng</a> </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg bg-dark nav-scd"> 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> 
+              <span class="navbar-toggler-icon"></span> 
+            </button>
+            <div class="collapse navbar-collapse sub-nav" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item active"> <a class="nav-link white" href="{{ route('home') }}">
+                  <i class="bi bi-house-fill"></i> Trang chủ</a> 
+                </li>
+                <li class="nav-item"> <a class="nav-link white" href="#info">
+                  <i class="bi bi-telephone-fill"></i> Liên hệ</a> 
+                </li>
+                <li class="nav-item"> <a class="nav-link white" href="#info">Giới thiệu</a> </li>
+                <li class="nav-item"> <a class="nav-link white" href="index.php?act=tintuc">
+                  <i class="bi bi-journal-text"></i> Tin tức</a> 
+                </li>
+                <li class="nav-item"> <a class="nav-link white" href="index.php?act=tintuc">
+                  <i class="bi bi-credit-card"></i>Phương thức thanh toán</a> 
+                </li>
               </ul>
             </div>
           </div>

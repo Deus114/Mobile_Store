@@ -31,8 +31,8 @@ body {
 }
 
 .logo{
-	margin-left: 10% !important;
-	margin-right: 7%;
+	margin-left: 15% !important;
+	margin-right: 8%;
 }
 
 footer {
@@ -42,8 +42,8 @@ footer {
 }
 
 .search {
-	margin-right: 4%;
-	width: 30%;
+	margin-right: 5%;
+	width: 35%;
 }
 
 .errtext {
@@ -61,6 +61,18 @@ footer {
 
 .sear {
 	border-radius: 0 !important;
+}
+
+.sub-nav {
+	margin-left: 30%;
+}
+
+.nav-scd {
+	max-height: 25%;
+}
+
+.nav-item {
+	margin-left: 20px;
 }
 /* footer */
 .fcontainer {
@@ -85,14 +97,14 @@ footer {
     min-height: 50px;
 }
 
-/* Css for signup */
+/* Css for signup & login */
 .login {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	max-width: 35%;
 	margin: auto;
 	font-family: arial;
 	padding: 10px;
-    margin-top: 20px;
+    margin-top: 5%;
 	background-color: white;
 }
 

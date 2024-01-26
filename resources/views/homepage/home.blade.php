@@ -17,7 +17,7 @@
             </div> <br>
             <div class="row">
                 <aside>
-                    <h3 class="asi">SẢN PHẨM BÁN CHẠY</h3>
+                    <h3 class="asi">SẢN PHẨM BÁN CHẠY <i class="bi bi-fire"></i></h3>
                     <ul class="list-group sellprd">
                         @foreach ($buys as $item)
                             @if ($item->status == 1)
