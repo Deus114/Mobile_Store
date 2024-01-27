@@ -23,6 +23,8 @@ Route::prefix('')->group(function() {
     // Login
     Route::get('/login', [HomeController::class, 'login'])->name('login');
     Route::post('/login', [HomeController::class, 'check_login']);
+    // Logout
+    Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
     // Register
     Route::get('/register', [HomeController::class, 'register'])->name('register');
     Route::post('/register', [HomeController::class, 'check_register']);
@@ -37,4 +39,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'category' => CategoryController::class,
         'product' => ProductController::class,
     ]);
+    // Logout
+    Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 });

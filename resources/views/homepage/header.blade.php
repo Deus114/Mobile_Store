@@ -28,12 +28,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto">
-                <li class="nav-item"> 
-                <a class="nav-link white" href="{{ route('login') }}"><i class="bi bi-person-fill"></i> Đăng nhập</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link white" href="{{ route('register') }}"><i class="bi bi-pencil-square"></i> Đăng Kí</a>
-                </li>
+                @if (Auth::check())
+                  <li class="nav-item"> 
+                  <a class="nav-link white" href="{{ route('home') }}"><i class="bi bi-person-fill"></i> {{ Auth::user()->name }}</a>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link white" href="{{ route('logout') }}"><i class="bi bi-box-arrow-right"></i> Thoát</a>
+                  </li>
+                @else
+                    <li class="nav-item"> 
+                    <a class="nav-link white" href="{{ route('login') }}"><i class="bi bi-person-fill"></i> Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link white" href="{{ route('register') }}"><i class="bi bi-pencil-square"></i> Đăng Kí</a>
+                    </li>
+                @endif
                 <li class="nav-item"><a class="nav-link white" href="index.php?act=cart"><i class="bi bi-cart3"></i> Giỏ hàng</a> </li>
               </ul>
             </div>

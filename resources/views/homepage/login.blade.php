@@ -3,6 +3,12 @@
     <div class="col-md-4 col-md-offset-4 login">
         <form action="" method="post" role="form">
             @csrf
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block" id="xclik">
+                    <button type="button" class="close" data-dismiss="alert" onclick="disable()">×</button>	
+                        <strong>{{ $message }}</strong>
+                </div>
+            @endif
             <legend class="formname">Đăng nhập</legend>
             <div class="mb-3">
                 <label class="form-label">Email</label>

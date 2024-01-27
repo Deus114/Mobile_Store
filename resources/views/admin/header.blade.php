@@ -26,7 +26,7 @@
             <a href="index.php?act=footer" style="--i:4;">Footer</a>
             <a href="index.php?act=quanlitaikhoan" style="--i:5;">Accounts</a> 
             <a href="index.php?act=donhang" style="--i:6;">Orders</a> 
-            <a href="index.php?act=thoat" style="--i:7;">Log out</a>
+            <a href="{{ route('admin.logout') }}" style="--i:7;">Log out</a>
         </nav>
     </header>
     <div class="container">

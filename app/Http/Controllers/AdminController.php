@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -12,5 +13,10 @@ class AdminController extends Controller
 
     public function categories(){
         return view('admin.categories');
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('home');
     }
 }

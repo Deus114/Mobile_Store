@@ -6,3 +6,8 @@ $(document).ready(function(){
         autoplaySpeed: 2000,
     });
 });
+
+function disable() {
+    var myDiv = document.getElementById("xclik");
+    myDiv.style.display = "none";
+}
