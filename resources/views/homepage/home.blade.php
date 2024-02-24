@@ -52,8 +52,13 @@
         <div class="col-sm-8 homeprd">
             <div class="row">
                 <div class="slider">
-                    <div><img src="/uploads/sliders/slider1.jpg" alt="Image 1" width="100%"></div>
-                    <div><img src="/uploads/sliders/slider2.jpg" alt="Image 2" width="100%"></div>
+                    @foreach ($banners as $item)
+                        @if ($item->status == 1)
+                            <div>
+                                <img src="/uploads/banners/{{ $item->image }}" alt="Image 1" width="100%">
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div> <br>
             <h4>SẢN PHẨM NỔI BẬT</h4>
@@ -62,30 +67,32 @@
             @endphp
             <div class="row justify-content-start">
             @foreach ($products as $item)
-                @if ($count==4)
+                @if ($item->status == 1)
+                    @if ($count==4)
+                        </div>
+                        <div class="row justify-content-start">
+                        @php
+                            $count-0;        
+                        @endphp
+                    @endif
+                    <div class="card col-sm-3">
+                        <div>
+                            <a href="{{ route('home.detail', $item->id) }}">
+                                <img class="rounded mx-auto d-block prdimg" src="/uploads/products/{{ $item->image }}" style="width:90%">
+                            </a>
+                        </div>
+                            <a href="{{ route('home.detail', $item->id) }}" class="card-text ellipsis">{{ $item->name }}</a>
+                        <div class="card-body">
+                            <p class="card-text errtext">{{ number_format($item->price) }}đ</p>
+                            <form action="" method="post">
+                                <input class="btn btn-primary res" type="submit" name="addcart" value="Thêm giỏ hàng">
+                            </form>
+                        </div>
                     </div>
-                    <div class="row justify-content-start">
                     @php
-                        $count-0;        
+                        $count++;        
                     @endphp
                 @endif
-                <div class="card col-sm-3">
-                    <div class="prdimg">
-                        <a href="{{ route('home.detail', $item->id) }}">
-                            <img class="rounded mx-auto d-block" src="/uploads/products/{{ $item->image }}" style="width:90%">
-                        </a>
-                    </div>
-                        <a href="{{ route('home.detail', $item->id) }}" class="card-text ellipsis">{{ $item->name }}</a>
-                    <div class="card-body">
-                        <p class="card-text errtext">{{ number_format($item->price) }}đ</p>
-                        <form action="" method="post">
-                            <input class="btn btn-primary res" type="submit" name="addcart" value="Thêm giỏ hàng">
-                        </form>
-                    </div>
-                </div>
-                @php
-                    $count++;        
-                @endphp
             @endforeach
             </div>
         </div>

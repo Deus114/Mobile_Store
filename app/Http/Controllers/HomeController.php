@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Banner;
 use Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +17,8 @@ class HomeController extends Controller
         $cats = Category::orderBy('name', 'ASC')->get();
         $buys = Product::orderBy('buy', 'DESC')->limit(5)->get();
         $products = Product::orderBy('id', 'DESC')->limit(8)->get();
-        return view('homepage.home', compact('cats', 'products', 'buys'));
+        $banners = Banner::orderBy('priority', 'DESC')->get();
+        return view('homepage.home', compact('cats', 'products', 'buys', 'banners'));
     }
 
     public function detail(Product $product) {

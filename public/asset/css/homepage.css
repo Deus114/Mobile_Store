@@ -148,8 +148,8 @@ aside h3 {
 }
 
 .prdimg:hover {
-	opacity: 0.7;
-	width: 105%;
+    opacity: 0.7;
+    width: 102% !important;
 }
 
 .homeprd {

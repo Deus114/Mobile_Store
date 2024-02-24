@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::resources([
         'category' => CategoryController::class,
         'product' => ProductController::class,
+        'banner' => BannerController::class,
     ]);
     // Logout
     Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');

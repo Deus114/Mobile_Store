@@ -65,7 +65,7 @@
                   <i class="bi bi-journal-text"></i> Tin tức</a> 
                 </li>
                 <li class="nav-item"> <a class="nav-link white" href="index.php?act=tintuc">
-                  <i class="bi bi-credit-card"></i>Phương thức thanh toán</a> 
+                  <i class="bi bi-credit-card"></i> Phương thức thanh toán</a> 
                 </li>
               </ul>
             </div>

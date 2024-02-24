@@ -1,43 +1,54 @@
 @extends('admin.index')
+
 @section('content')
     <div class="bg-light d-flex align-items-center justify-content-center border rounded-3 p-1 p-sm-3 m-2 m-sm-4">
-        <h2>THÊM SẢN PHẨM</h2>
+        <h2>THÊM BANNER</h2>
     </div>
     <div class="crud">
-        <form action="{{ route('product.store') }}" method="post" role="form" enctype="multipart/form-data">
+        <form action="{{ route('banner.store') }}" method="post" role="form" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-9">
                     <div class="form-group">
-                        <h5>Tên sản phẩm</h5>
-                        <input type="text" class="form-control" name="name" placeholder="Nhập tên sản phẩm">
-                        @error('name')
-                            <span class="errtext">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <h5>Giá</h5>
-                        <input type="text" class="form-control" name="price" placeholder="Nhập giá">
-                        @error('price')
-                            <span class="errtext">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <h5>Giới thiệu</h5>
-                        <textarea class="form-control" name="content" placeholder="Nhập giới thiệu sản phẩm"></textarea>
+                        <h5>Nội dung</h5>
+                        <textarea class="form-control" name="content" placeholder="Nhập nội dung"></textarea>
                         @error('content')
                             <span class="errtext">{{ $message }}</span>
                         @enderror
                     </div>
                     <br>
                     <div class="form-group">
-                        <h5>Mô tả</h5>
-                        <textarea class="form-control" name="description" placeholder="Nhập mô tả"></textarea>
-                        @error('description')
-                            <span class="errtext">{{ $message }}</span>
-                        @enderror
+                        <h5>Ưu tiên</h5>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="priority" value="0" checked>
+                                0
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="priority" value="1">
+                                1
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="priority" value="2">
+                                2
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="priority" value="3">
+                                3
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="priority" value="4">
+                                4
+                            </label>
+                        </div>
                     </div>
                     <br>
                 </div>
@@ -64,15 +75,6 @@
                                 Ẩn
                             </label>
                         </div>
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <h5>Danh mục sản phẩm</h5>
-                        <select name="category_id">
-                            @foreach ($cats as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                            @endforeach
-                        </select>
                     </div>
                     <br>
                     <button type="submit" class="btn btn-success crud-btn">Thêm mới</button>
