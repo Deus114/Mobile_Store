@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Banner;
+use App\Models\OnlineCart;
 use Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -73,5 +74,22 @@ class HomeController extends Controller
         $data['password'] = bcrypt(request('password'));
         User::create($data);
         return redirect()->route('login')->with('success','Đăng kí thành công!');
+    }
+
+    public function cart_view(Cart $cart) {
+    }
+
+    public function online_cart_view(OnlineCart $cart) {
+        return view('homepage.cart', compact('cart')); 
+    }
+
+    public function add_onlinecart(Product $product, OnlineCart $cart) {
+            $cart->add($product);
+            return redirect()->route('onlinecart.view');
+    }
+
+    public function delete_onlinecart($id, OnlineCart $cart) {
+            $cart->delete($id);
+            return redirect()->route('onlinecart.view');
     }
 }

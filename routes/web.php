@@ -31,6 +31,11 @@ Route::prefix('')->group(function() {
     Route::post('/register', [HomeController::class, 'check_register']);
     // Detail
     Route::get('/detail/{product}', [HomeController::class, 'detail'])->name('home.detail');
+    //Cart
+    Route::get('/cart', [HomeController::class, 'cart_view'])->name('cart.view');
+    Route::get('/onlinecart', [HomeController::class, 'online_cart_view'])->name('onlinecart.view');
+    Route::get('/add_onlinecart/{product}', [HomeController::class, 'add_onlinecart'])->name('onlinecart.add');
+    Route::get('/delete_onlinecart/{id}', [HomeController::class, 'delete_onlinecart'])->name('onlinecart.delete');
 });
 
 // Admin Route

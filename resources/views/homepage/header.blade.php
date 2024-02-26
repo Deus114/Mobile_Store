@@ -35,6 +35,9 @@
                   <li class="nav-item">
                   <a class="nav-link white" href="{{ route('logout') }}"><i class="bi bi-box-arrow-right"></i> Thoát</a>
                   </li>
+                  <li class="nav-item"><a class="nav-link white" href="{{ route('cart.view') }}"><i class="bi bi-cart3">
+                    </i> Giỏ hàng</a> 
+                  </li>
                 @else
                     <li class="nav-item"> 
                     <a class="nav-link white" href="{{ route('login') }}"><i class="bi bi-person-fill"></i> Đăng nhập</a>
@@ -42,8 +45,10 @@
                     <li class="nav-item">
                     <a class="nav-link white" href="{{ route('register') }}"><i class="bi bi-pencil-square"></i> Đăng Kí</a>
                     </li>
+                    <li class="nav-item"><a class="nav-link white" href="{{ route('onlinecart.view') }}"><i class="bi bi-cart3">
+                    </i> Giỏ hàng</a> 
+                  </li>
                 @endif
-                <li class="nav-item"><a class="nav-link white" href="index.php?act=cart"><i class="bi bi-cart3"></i> Giỏ hàng</a> </li>
               </ul>
             </div>
           </div>

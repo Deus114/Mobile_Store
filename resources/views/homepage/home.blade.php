@@ -36,9 +36,11 @@
                                             <p class="errtext">{{ number_format($item->price) }}đ</p>
                                         </div>
                                         <div class="row">
-                                            <form action="" method="post">
-                                                <input class="btn-primary btn sellprdbtn" type="submit" name="addcart" value="Mua ngay">
-                                            </form>
+                                            @if (Auth::check())
+                                                
+                                            @else
+                                                <a href="{{ route('onlinecart.add', $item->id) }}" class="btn btn-primary sellprdbtn">Mua ngay</a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -72,7 +74,7 @@
                         </div>
                         <div class="row justify-content-start">
                         @php
-                            $count-0;        
+                            $count=0;        
                         @endphp
                     @endif
                     <div class="card col-sm-3">
@@ -84,9 +86,11 @@
                             <a href="{{ route('home.detail', $item->id) }}" class="card-text ellipsis">{{ $item->name }}</a>
                         <div class="card-body">
                             <p class="card-text errtext">{{ number_format($item->price) }}đ</p>
-                            <form action="" method="post">
-                                <input class="btn btn-primary res" type="submit" name="addcart" value="Thêm giỏ hàng">
-                            </form>
+                            @if (Auth::check())
+                                
+                            @else
+                                <a href="{{ route('onlinecart.add', $item->id) }}" class="btn btn-primary res">Thêm giỏ hàng</a>
+                            @endif
                         </div>
                     </div>
                     @php
