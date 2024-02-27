@@ -36,6 +36,8 @@ Route::prefix('')->group(function() {
     Route::get('/onlinecart', [HomeController::class, 'online_cart_view'])->name('onlinecart.view');
     Route::get('/add_onlinecart/{product}', [HomeController::class, 'add_onlinecart'])->name('onlinecart.add');
     Route::get('/delete_onlinecart/{id}', [HomeController::class, 'delete_onlinecart'])->name('onlinecart.delete');
+    Route::get('/onlinecartdown/{id}', [HomeController::class, 'onlinecart_down'])->name('onlinecart.down');
+    Route::get('/onlinecartup/{id}', [HomeController::class, 'onlinecart_up'])->name('onlinecart.up');
 });
 
 // Admin Route

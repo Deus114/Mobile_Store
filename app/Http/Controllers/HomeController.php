@@ -76,8 +76,7 @@ class HomeController extends Controller
         return redirect()->route('login')->with('success','Đăng kí thành công!');
     }
 
-    public function cart_view(Cart $cart) {
-    }
+    /* Cart controller */ 
 
     public function online_cart_view(OnlineCart $cart) {
         return view('homepage.cart', compact('cart')); 
@@ -91,5 +90,18 @@ class HomeController extends Controller
     public function delete_onlinecart($id, OnlineCart $cart) {
             $cart->delete($id);
             return redirect()->route('onlinecart.view');
+    }
+
+    public function onlinecart_down($id, OnlineCart $cart) {
+        $cart->down($id);
+        return redirect()->route('onlinecart.view');
+    }
+
+    public function onlinecart_up($id, OnlineCart $cart) {
+        $cart->up($id);
+        return redirect()->route('onlinecart.view');
+    }
+
+    public function cart_view(Cart $cart) {
     }
 }

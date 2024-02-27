@@ -45,8 +45,12 @@
                     <li class="nav-item">
                     <a class="nav-link white" href="{{ route('register') }}"><i class="bi bi-pencil-square"></i> Đăng Kí</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link white" href="{{ route('onlinecart.view') }}"><i class="bi bi-cart3">
-                    </i> Giỏ hàng</a> 
+                    <li class="nav-item"><a class="nav-link white cart" href="{{ route('onlinecart.view') }}"><i class="bi bi-cart3">
+                    </i> Giỏ hàng 
+                    @if ($onlinecart->totalQuantity > 0)
+                      <span class="cart-nofi"><span>{{ $onlinecart->totalQuantity }}</span></span>
+                    @endif
+                    </a> 
                   </li>
                 @endif
               </ul>

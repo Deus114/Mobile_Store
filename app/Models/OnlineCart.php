@@ -39,6 +39,23 @@ Class OnlineCart
         }
     }
 
+    public function down($id){
+        if (isset($this->items[$id])){
+            if($this->items[$id]->quantity > 1){
+                $this->items[$id]->quantity -= 1;
+                session(['cart' => $this->items]);
+            }
+            else $this->delete($id);
+        }
+    }
+
+    public function up($id){
+        if (isset($this->items[$id])){
+                $this->items[$id]->quantity += 1;
+                session(['cart' => $this->items]);
+        }
+    }
+
     private function getQuantityTotal(){
         $total = 0;
         foreach($this->items as $item) {

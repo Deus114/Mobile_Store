@@ -239,3 +239,20 @@ aside h3 {
 	text-align: center;
 	margin-left: 32%;
 }
+
+.cart {
+	position: relative;
+}
+
+.cart-nofi {
+	position: absolute;
+	top: 0;
+	right: -15px;
+	width: 25px;
+	height: 25px;
+	background-color: red;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	justify-items: center;
+}
