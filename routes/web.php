@@ -31,13 +31,21 @@ Route::prefix('')->group(function() {
     Route::post('/register', [HomeController::class, 'check_register']);
     // Detail
     Route::get('/detail/{product}', [HomeController::class, 'detail'])->name('home.detail');
-    //Cart
-    Route::get('/cart', [HomeController::class, 'cart_view'])->name('cart.view');
+    // Online Cart
     Route::get('/onlinecart', [HomeController::class, 'online_cart_view'])->name('onlinecart.view');
     Route::get('/add_onlinecart/{product}', [HomeController::class, 'add_onlinecart'])->name('onlinecart.add');
     Route::get('/delete_onlinecart/{id}', [HomeController::class, 'delete_onlinecart'])->name('onlinecart.delete');
     Route::get('/onlinecartdown/{id}', [HomeController::class, 'onlinecart_down'])->name('onlinecart.down');
     Route::get('/onlinecartup/{id}', [HomeController::class, 'onlinecart_up'])->name('onlinecart.up');
+});
+
+// User Cart
+Route::group(['prefix' => 'usercart', 'middleware' => 'auth'], function(){
+    Route::get('/view', [HomeController::class, 'user_cart_view'])->name('usercart.view');
+    Route::get('/add/{product}', [HomeController::class, 'add_usercart'])->name('usercart.add');
+    Route::get('/delete/{id}', [HomeController::class, 'delete_usercart'])->name('usercart.delete');
+    Route::get('/down/{id}', [HomeController::class, 'usercart_down'])->name('usercart.down');
+    Route::get('/up/{id}', [HomeController::class, 'usercart_up'])->name('usercart.up');
 });
 
 // Admin Route

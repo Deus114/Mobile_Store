@@ -34,9 +34,13 @@
                   </li>
                   <li class="nav-item">
                   <a class="nav-link white" href="{{ route('logout') }}"><i class="bi bi-box-arrow-right"></i> Thoát</a>
-                  </li>
-                  <li class="nav-item"><a class="nav-link white" href="{{ route('cart.view') }}"><i class="bi bi-cart3">
-                    </i> Giỏ hàng</a> 
+                  </li> 
+                  <li class="nav-item"><a class="nav-link white cart" href="{{ route('usercart.view') }}"><i class="bi bi-cart3">
+                    </i> Giỏ hàng
+                    @if ($totalQuantity > 0)
+                      <span class="cart-nofi"><span>{{ $totalQuantity }}</span></span>
+                    @endif
+                  </a> 
                   </li>
                 @else
                     <li class="nav-item"> 
@@ -66,14 +70,14 @@
                 <li class="nav-item active"> <a class="nav-link white" href="{{ route('home') }}">
                   <i class="bi bi-house-fill"></i> Trang chủ</a> 
                 </li>
-                <li class="nav-item"> <a class="nav-link white" href="#info">
+                <li class="nav-item"> <a class="nav-link white" href="#">
                   <i class="bi bi-telephone-fill"></i> Liên hệ</a> 
                 </li>
-                <li class="nav-item"> <a class="nav-link white" href="#info">Giới thiệu</a> </li>
-                <li class="nav-item"> <a class="nav-link white" href="index.php?act=tintuc">
+                <li class="nav-item"> <a class="nav-link white" href="#">Giới thiệu</a> </li>
+                <li class="nav-item"> <a class="nav-link white" href="#">
                   <i class="bi bi-journal-text"></i> Tin tức</a> 
                 </li>
-                <li class="nav-item"> <a class="nav-link white" href="index.php?act=tintuc">
+                <li class="nav-item"> <a class="nav-link white" href="#">
                   <i class="bi bi-credit-card"></i> Phương thức thanh toán</a> 
                 </li>
               </ul>

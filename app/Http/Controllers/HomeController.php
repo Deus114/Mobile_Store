@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Banner;
 use App\Models\OnlineCart;
+use App\Models\UserCart;
 use Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -84,12 +85,12 @@ class HomeController extends Controller
 
     public function add_onlinecart(Product $product, OnlineCart $cart) {
             $cart->add($product);
-            return redirect()->route('onlinecart.view');
+            return redirect()->route('onlinecart.view')->with('ok', 'Thêm sản phẩm thành công!');
     }
 
     public function delete_onlinecart($id, OnlineCart $cart) {
             $cart->delete($id);
-            return redirect()->route('onlinecart.view');
+            return redirect()->route('onlinecart.view')->with('ok', 'Xóa sản phẩm thành công!');
     }
 
     public function onlinecart_down($id, OnlineCart $cart) {
@@ -102,6 +103,68 @@ class HomeController extends Controller
         return redirect()->route('onlinecart.view');
     }
 
-    public function cart_view(Cart $cart) {
+    public function user_cart_view() {
+        return view('homepage.usercart'); 
+    }
+
+    public function add_usercart(Product $product) {
+        $item = UserCart::where('user_id', Auth::user()->id)
+                ->where('product_id', $product->id)
+                ->first();
+        if(!isset($item)) {
+            $quantity = 1;
+            $data = [
+                'name' => $product->name,
+                'image' => $product->image,
+                'price' => $product->price,
+                'quantity' => $quantity,
+                'user_id' => Auth::user()->id,
+                'product_id' => $product->id
+            ];
+            if(UserCart::create($data))
+                return redirect()->route('usercart.view')->with('ok', 'Thêm sản phẩm thành công!');
+        }
+        else {
+            UserCart::where([
+                'user_id' => Auth::user()->id,
+                'product_id' => $product->id
+            ]) -> increment('quantity', 1);
+            return redirect()->route('usercart.view')->with('ok', 'Thêm sản phẩm thành công!');
+        }
+    }
+
+    public function delete_usercart($id) {
+        UserCart::where([
+            'user_id' => Auth::user()->id,
+            'product_id' => $id
+        ]) -> delete();
+        return redirect()->route('usercart.view')->with('ok', 'Xóa sản phẩm thành công!');
+    }
+
+    public function usercart_down($id) {
+        $item = UserCart::where('user_id', Auth::user()->id)
+                ->where('product_id', $id)
+                ->first();
+        if($item->quantity > 1){
+            UserCart::where([
+                'user_id' => Auth::user()->id,
+                'product_id' => $id
+            ]) -> increment('quantity', -1);
+        }
+        else {
+            UserCart::where([
+                'user_id' => Auth::user()->id,
+                'product_id' => $id
+            ]) -> delete();
+        }
+        return redirect()->route('usercart.view');
+    }
+
+    public function usercart_up($id) {
+        UserCart::where([
+            'user_id' => Auth::user()->id,
+            'product_id' => $id
+        ])->increment('quantity', 1);
+        return redirect()->route('usercart.view');
     }
 }

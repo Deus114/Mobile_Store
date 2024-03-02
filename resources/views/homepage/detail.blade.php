@@ -28,10 +28,11 @@
                         <br>
                         <h4>Mô tả:</h4>
                         <p>{{ $product->content }}</p>
-                        <form action="" method="post">
-                            <input type="hidden" name="idsp" value="">
-                            <input class=" btn btn-danger respo" type="submit" name="addcart" value="Thêm giỏ hàng">
-                        </form>
+                        @if (Auth::check())
+                            <a href="{{ route('usercart.add', $product->id) }}" class="btn btn-danger respo">Mua ngay</a>
+                        @else
+                            <a href="{{ route('onlinecart.add', $product->id) }}" class="btn btn-danger respo">Mua ngay</a>
+                        @endif
                     </div>
                 </div>
                 <div class="col-12" style="margin-top: 25px;">

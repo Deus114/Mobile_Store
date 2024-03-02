@@ -1,11 +1,13 @@
 @extends('index')
 @section('content')
+
     @if (Session::has('ok'))
-    <div class="alert alert-success" role="alert" id="alert">
-        <h3>Thông báo:</h3>
-        <p>{{ Session::get('ok') }}</p>
-    </div>  
+        <div class="alert alert-success" role="alert" id="alert">
+            <h3>Thông báo:</h3>
+            <p>{{ Session::get('ok') }}</p>
+        </div>  
     @endif
+    
     <a href="{{ route('home') }}" class="non-dec">< Tiếp tục mua hàng</a>
     <br></br>
     <h2>Giỏ hàng của bạn</h2>
@@ -23,26 +25,26 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($cart->items as $item)
+            @foreach ($usercart as $item)
                 <tr>
                     <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $item->name }}</td>
                     <td><img src="/uploads/products/{{ $item->image }}" alt="{{ $item->name }}" width="40"></td>
                     <td>{{ number_format($item->price) }}đ</td>
-                    <td><a href="{{ route('onlinecart.down', $item->id) }}" class="none-dec">-</a> {{ $item->quantity }} <a href="{{ route('onlinecart.up', $item->id) }}" class="none-dec">+</a></td>
+                    <td><a href="{{ route('usercart.down', $item->product_id) }}" class="none-dec">-</a> {{ $item->quantity }} <a href="{{ route('usercart.up', $item->product_id) }}" class="none-dec">+</a></td>
                     <td>{{ number_format($item->price*$item->quantity) }}đ</td>
-                    <td><a href="{{ route('onlinecart.delete', $item->id) }}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Xóa</a></td>
+                    <td><a href="{{ route('usercart.delete', $item->product_id) }}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Xóa</a></td>
                 </tr>
             @endforeach
             <tr>
                 <th colspan="4"></th>
                 <th >Tổng số lượng:</th>
-                <th colspan="2">{{ $cart->totalQuantity }} (sản phẩm)</th>
+                <th colspan="2">{{ $totalQuantity }} (sản phẩm)</th>
             </tr>
             <tr>
                 <th colspan="4"></th>
                 <th >Tổng tiền:</th>
-                <th colspan="2">{{ number_format($cart->totalPrice) }}đ</th>
+                <th colspan="2">{{ number_format($totalPrice )}} đ</th>
             </tr>
         </tbody>
     </table>

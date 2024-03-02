@@ -11,3 +11,10 @@ function disable() {
     var myDiv = document.getElementById("xclik");
     myDiv.style.display = "none";
 }
+
+setTimeout(function() {
+    var alertElement = document.getElementById("alert");
+    if (alertElement) {
+      alertElement.style.display = "none";
+    }
+}, 3000);

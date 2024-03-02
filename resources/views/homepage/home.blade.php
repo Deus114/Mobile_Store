@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="row">
                                             @if (Auth::check())
-                                                
+                                                <a href="{{ route('usercart.add', $item->id) }}" class="btn btn-primary sellprdbtn">Mua ngay</a>
                                             @else
                                                 <a href="{{ route('onlinecart.add', $item->id) }}" class="btn btn-primary sellprdbtn">Mua ngay</a>
                                             @endif
@@ -87,7 +87,7 @@
                         <div class="card-body">
                             <p class="card-text errtext">{{ number_format($item->price) }}đ</p>
                             @if (Auth::check())
-                                
+                                <a href="{{ route('usercart.add', $item->id) }}" class="btn btn-primary res">Thêm giỏ hàng</a>
                             @else
                                 <a href="{{ route('onlinecart.add', $item->id) }}" class="btn btn-primary res">Thêm giỏ hàng</a>
                             @endif
