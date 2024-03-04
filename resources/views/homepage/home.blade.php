@@ -9,9 +9,10 @@
                     <ul class="list-group">
                         @foreach ($cats as $item)
                             @if ($item->status == 1)
-                            <li class="list-group-item"><a href="" class="ellipsis">{{ $item->name }}</a></li>
+                            <li class="list-group-item"><a href="{{ route('product_by_category', $item->id) }}" class="ellipsis">{{ $item->name }}</a></li>
                             @endif
                         @endforeach
+                        <li class="list-group-item"><a href="{{ route('product_all') }}" class="ellipsis">Tất cả</a></li>
                     </ul>
                 </aside>
             </div> <br>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
@@ -166,5 +167,75 @@ class HomeController extends Controller
             'product_id' => $id
         ])->increment('quantity', 1);
         return redirect()->route('usercart.view');
+    }
+
+    // User profile
+    public function profile_view(){
+        return view('homepage.profile');
+    }
+
+    public function profile_edit(){
+        return view('homepage.profile_edit');
+    }
+
+    public function profile_update(Request $req){
+        if(request()->filled('password') || request()->filled('newpassword')){
+            request()->validate([
+            'name'=>'required',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore(Auth::user()->email, 'email'),
+            ],
+            'password'=>'required',
+            'newpassword'=>'required',
+            ]);
+            $data = request()->all('email', 'password');
+
+            if(auth()->attempt($data)){
+                User::where('id', Auth::user()->id)->update([
+                    'name' => $req->input('name'),
+                    'email' => $req->input('email'),
+                    'password' => bcrypt($req->input('newpassword')),
+                    'phone' => $req->input('phone'),
+                    'address' => $req->input('address'),
+                ]);
+            }
+            else{
+                $erro = 'Mật khẩu cũ không đúng';
+                return redirect()->back()->with('erro', $erro);;
+            }
+        }
+        else {
+            request()->validate([
+                'name'=>'required',
+                'email' => [
+                    'required',
+                    'email',
+                    Rule::unique('users')->ignore(Auth::user()->email, 'email'),
+                ],
+            ]);
+            User::where('id', Auth::user()->id)->update([
+                'name' => $req->input('name'),
+                'email' => $req->input('email'),
+                'phone' => $req->input('phone'),
+                'address' => $req->input('address'),
+            ]);
+        }
+        
+        return redirect()->route('profile.view');
+    }
+
+    public function product_by_category($category_id){
+        $cats = Category::orderBy('name', 'ASC')->get();
+        $products = Product::where('category_id', $category_id)->orderBy('id', 'DESC')->get();
+        $cat =  Category::where('id', $category_id)->first()->name;
+        return view('homepage.product_by_category', compact('products', 'cats', 'cat'));
+    }
+
+    public function product_all(){
+        $cats = Category::orderBy('name', 'ASC')->get();
+        $products = Product::orderBy('id', 'DESC')->get();
+        return view('homepage.product_all', compact('products','cats'));
     }
 }

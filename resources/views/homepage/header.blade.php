@@ -30,7 +30,7 @@
               <ul class="navbar-nav me-auto">
                 @if (Auth::check())
                   <li class="nav-item"> 
-                  <a class="nav-link white" href="{{ route('home') }}"><i class="bi bi-person-fill"></i> {{ Auth::user()->name }}</a>
+                  <a class="nav-link white" href="{{ route('profile.view') }}"><i class="bi bi-person-fill"></i> {{ Auth::user()->name }}</a>
                   </li>
                   <li class="nav-item">
                   <a class="nav-link white" href="{{ route('logout') }}"><i class="bi bi-box-arrow-right"></i> Thoát</a>

@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::useBootstrap();
         view()->composer('*', function($view){
             if(Auth::check()){
                 $usercart = UserCart::orderBy('id', 'DESC')->where('user_id', Auth::user()->id)->get();
