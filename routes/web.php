@@ -37,6 +37,9 @@ Route::prefix('')->group(function() {
     Route::get('/delete_onlinecart/{id}', [HomeController::class, 'delete_onlinecart'])->name('onlinecart.delete');
     Route::get('/onlinecartdown/{id}', [HomeController::class, 'onlinecart_down'])->name('onlinecart.down');
     Route::get('/onlinecartup/{id}', [HomeController::class, 'onlinecart_up'])->name('onlinecart.up');
+    Route::get('/onlinecartbuy', [HomeController::class, 'onlinecart_buy'])->name('onlinecart.buy');
+    Route::post('/onlinecartbuy', [HomeController::class, 'onlinecart_order']);
+
     // Show products
     Route::get('/product/{id}', [HomeController::class, 'product_by_category'])->name('product_by_category');
     Route::get('/product', [HomeController::class, 'product_all'])->name('product_all');
@@ -51,9 +54,12 @@ Route::group(['prefix' => 'usercart', 'middleware' => 'auth'], function(){
     Route::get('/delete/{id}', [HomeController::class, 'delete_usercart'])->name('usercart.delete');
     Route::get('/down/{id}', [HomeController::class, 'usercart_down'])->name('usercart.down');
     Route::get('/up/{id}', [HomeController::class, 'usercart_up'])->name('usercart.up');
+    Route::get('/buy', [HomeController::class, 'user_cart_buy'])->name('usercart.buy');
+    Route::post('/buy', [HomeController::class, 'user_cart_order']);
+    Route::get('/history', [HomeController::class, 'user_cart_history'])->name('usercart.history');
 });
 
-// User Cart
+// User Profile
 Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function(){
     Route::get('/view', [HomeController::class, 'profile_view'])->name('profile.view');
     Route::get('/edit', [HomeController::class, 'profile_edit'])->name('profile.edit');

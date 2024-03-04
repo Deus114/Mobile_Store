@@ -10,6 +10,8 @@
     
     <a href="{{ route('home') }}" class="non-dec">< Tiếp tục mua hàng</a>
     <br></br>
+    <a href="{{ route('usercart.history') }}" class="non-dec">Lịch sử mua hàng</a>
+    <br></br>
     <h2>Giỏ hàng của bạn</h2>
     <hr>
     <table class="table table-hover">
@@ -48,4 +50,7 @@
             </tr>
         </tbody>
     </table>
+    @if ($totalQuantity > 0)
+        <a href="{{ route('usercart.buy') }}" class="btn btn-success">Mua hàng</a>
+    @endif
 @endsection

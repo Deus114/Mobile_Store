@@ -10,8 +10,10 @@ use App\Models\Product;
 use App\Models\Banner;
 use App\Models\OnlineCart;
 use App\Models\UserCart;
+use App\Models\Order;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -19,12 +21,13 @@ class HomeController extends Controller
         if(Auth::check() && Auth::user()->role == 1) Auth::logout();
         $cats = Category::orderBy('name', 'ASC')->get();
         $buys = Product::orderBy('buy', 'DESC')->limit(5)->get();
-        $products = Product::orderBy('id', 'DESC')->limit(8)->get();
+        $products = Product::orderBy('watch', 'DESC')->limit(8)->get();
         $banners = Banner::orderBy('priority', 'DESC')->get();
         return view('homepage.home', compact('cats', 'products', 'buys', 'banners'));
     }
 
     public function detail(Product $product) {
+        Product::where('id', $product->id)->increment('watch', 1);
         $cats = Category::orderBy('name', 'ASC')->get();
         return view('homepage.detail', compact('cats', 'product'));
     }
@@ -80,6 +83,8 @@ class HomeController extends Controller
 
     /* Cart controller */ 
 
+    // Online cart
+
     public function online_cart_view(OnlineCart $cart) {
         return view('homepage.cart', compact('cart')); 
     }
@@ -102,6 +107,71 @@ class HomeController extends Controller
     public function onlinecart_up($id, OnlineCart $cart) {
         $cart->up($id);
         return redirect()->route('onlinecart.view');
+    }
+
+    public function onlinecart_buy(){
+        return view('homepage.online_buy'); 
+    }
+
+    public function onlinecart_order(Request $req, OnlineCart $cart){
+        request()->validate([
+            'name'=>'required|min:2',
+            'email'=>'required|email',
+            'phone'=>'required|numeric|min:100000000',
+            'address'=>'required|min:5'
+        ]);
+        if(Order::max('id') == null) $code = "MS".Str::padLeft('1', 8, '0');
+        else {
+            $id = Order::max('id') + 1;
+            $code = "MS".Str::padLeft($id, 8, '0');
+        }
+        $data = request()->only('content', 'name', 'phone', 'email', 'address', 'payment', 'totalQuantity', 'totalPrice');
+        $data['code'] = $code;
+        if(Order::create($data)){
+            foreach($cart->items as $item){
+                Product::where('id', $item->id)->increment('buy', $item->quantity);
+            }
+            $cart->clear();
+            return redirect()->route('onlinecart.view')->with('ok','Đặt hàng thành công vui lòng chờ đơn hàng được xác nhận!');
+        }
+        
+        else return view('homepage.online_buy'); 
+    }
+
+    // User Cart
+    public function user_cart_history(){
+        $order = Order::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('homepage.user_history', compact('order')); 
+    }
+
+    public function user_cart_buy(){
+        return view('homepage.user_buy'); 
+    }
+
+    public function user_cart_order(Request $req){
+        request()->validate([
+            'name'=>'required|min:2',
+            'email'=>'required|email',
+            'phone'=>'required|numeric|min:100000000',
+            'address'=>'required|min:5'
+        ]);
+        if(Order::max('id') == null) $code = "MS".Str::padLeft('1', 8, '0');
+        else {
+            $id = Order::max('id') + 1;
+            $code = "MS".Str::padLeft($id, 8, '0');
+        }
+        $data = request()->only('content', 'name', 'phone', 'email', 'address', 'payment', 'totalQuantity', 'totalPrice', 'user_id');
+        $data['code'] = $code;
+        if(Order::create($data)){
+            $buy = UserCart::where('user_id', Auth::user()->id)->get();
+            foreach($buy as $item){
+                Product::where('id', $item->product_id)->increment('buy', $item->quantity);
+            }
+            UserCart::where('user_id', Auth::user()->id)->delete();
+            return redirect()->route('usercart.view')->with('ok','Đặt hàng thành công vui lòng chờ đơn hàng được xác nhận!');
+        }
+        
+        else return view('homepage.user_buy'); 
     }
 
     public function user_cart_view() {

@@ -39,6 +39,11 @@ Class OnlineCart
         }
     }
 
+    public function clear(){
+        $this->items = [];
+        session(['cart' => $this->items]);
+    }
+
     public function down($id){
         if (isset($this->items[$id])){
             if($this->items[$id]->quantity > 1){

@@ -46,4 +46,7 @@
             </tr>
         </tbody>
     </table>
+    @if ($onlinecart->totalQuantity > 0)
+        <a href="{{ route('onlinecart.buy') }}" class="btn btn-success">Mua hàng</a>
+    @endif
 @endsection
