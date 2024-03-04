@@ -229,13 +229,28 @@ class HomeController extends Controller
     public function product_by_category($category_id){
         $cats = Category::orderBy('name', 'ASC')->get();
         $products = Product::where('category_id', $category_id)->orderBy('id', 'DESC')->get();
-        $cat =  Category::where('id', $category_id)->first()->name;
+        $cat =  Category::where('id', $category_id)->first();
         return view('homepage.product_by_category', compact('products', 'cats', 'cat'));
     }
 
     public function product_all(){
         $cats = Category::orderBy('name', 'ASC')->get();
         $products = Product::orderBy('id', 'DESC')->get();
+        return view('homepage.product_all', compact('products','cats'));
+    }
+
+    public function product_by_category_price($category_id, $price){
+        if($price == 1) $products = Product::where('category_id', $category_id)->orderBy('price', 'DESC')->get();
+        else $products = Product::where('category_id', $category_id)->orderBy('price', 'ASC')->get();
+        $cats = Category::orderBy('name', 'ASC')->get();
+        $cat =  Category::where('id', $category_id)->first();
+        return view('homepage.product_by_category', compact('products', 'cats', 'cat'));
+    }
+
+    public function product_all_price($price){
+        if($price == 1) $products = Product::orderBy('price', 'DESC')->get();
+        else $products = Product::orderBy('price', 'ASC')->get();
+        $cats = Category::orderBy('name', 'ASC')->get();
         return view('homepage.product_all', compact('products','cats'));
     }
 }

@@ -15,7 +15,23 @@
             </aside>
         </div>
         <div class="col-sm-8 homeprd">
-            <h4 class="modal-title">{{ $cat }}</h4> <br>
+            <div class="row">
+                <div class="col">
+                    <h4 class="modal-title">{{ $cat->name }}</h4> 
+                </div>
+                <div class="col">
+                    <div class="dropdown">
+                        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sắp xếp theo giá
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li class="dropdown-item"><a class="text-decoration-none" href="{{ route('product_by_category_price', ['id'=>$cat->id, 'price'=>1]) }}">Giảm dần</a></li>
+                            <li class="dropdown-item"><a class="text-decoration-none" href="{{ route('product_by_category_price', ['id'=>$cat->id, 'price'=>2]) }}">Tăng dần</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <br>
             @php
                 $count=0;        
             @endphp

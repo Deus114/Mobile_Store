@@ -40,6 +40,8 @@ Route::prefix('')->group(function() {
     // Show products
     Route::get('/product/{id}', [HomeController::class, 'product_by_category'])->name('product_by_category');
     Route::get('/product', [HomeController::class, 'product_all'])->name('product_all');
+    Route::get('/product/{id}/{price}', [HomeController::class, 'product_by_category_price'])->name('product_by_category_price');
+    Route::get('/product_price/{price}', [HomeController::class, 'product_all_price'])->name('product_all_price');
 });
 
 // User Cart
