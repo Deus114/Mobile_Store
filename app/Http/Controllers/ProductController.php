@@ -17,6 +17,24 @@ class ProductController extends Controller
         return view('admin.product.index', compact('products'));
     }
 
+    public function buy($buy)
+    {
+        if($buy == 1)
+            $products = Product::orderBy('buy', 'DESC')->paginate(5);
+        else 
+            $products = Product::orderBy('buy', 'ASC')->paginate(5);
+        return view('admin.product.index', compact('products'));
+    }
+
+    public function watch($watch)
+    {
+        if($watch == 1)
+            $products = Product::orderBy('watch', 'DESC')->paginate(5);
+        else 
+            $products = Product::orderBy('watch', 'ASC')->paginate(5);
+        return view('admin.product.index', compact('products'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

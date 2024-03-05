@@ -18,7 +18,7 @@
         <!-- Begin Nav -->
         <nav class="navbar navbar-expand-lg bg-blue"> 
           <div class="container-fluid">
-            <img class="nav-content logo" src="/uploads/logo/logo.png" alt="Mobile Store" width="5%">
+            <img class="nav-content logo" src="/uploads/logo/logo.jpg" alt="Mobile Store" width="5%">
             <form class="d-flex search">
               <input class="form-control me-2 sear" type="search" placeholder="Tìm kiếm" aria-label="Search">
               <button class="btn btn-search" type="submit"><i class="bi bi-search"></i></button>

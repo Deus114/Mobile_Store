@@ -12,15 +12,23 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::orderBy('id', 'DESC')->paginate(10);
+        return view('admin.order.index', compact('orders'));
+    }
+
+    public function confirmed($confirm)
+    {
+        $orders = Order::where('confirm', $confirm)->orderBy('id', 'DESC')->paginate(10);
+        return view('admin.order.index', compact('orders'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function confirm($id)
     {
-        //
+        Order::where('id', $id)->increment('confirm', 1);
+        return redirect()->route('order.index');
     }
 
     /**
@@ -60,6 +68,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect()->route('order.index');
     }
 }

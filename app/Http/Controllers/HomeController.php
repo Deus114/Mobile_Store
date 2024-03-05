@@ -11,6 +11,7 @@ use App\Models\Banner;
 use App\Models\OnlineCart;
 use App\Models\UserCart;
 use App\Models\Order;
+use App\Models\Comment;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -29,7 +30,19 @@ class HomeController extends Controller
     public function detail(Product $product) {
         Product::where('id', $product->id)->increment('watch', 1);
         $cats = Category::orderBy('name', 'ASC')->get();
-        return view('homepage.detail', compact('cats', 'product'));
+        $comments = Comment::where('product_id', $product->id)->orderBy('id', 'DESC')->paginate(10);
+        return view('homepage.detail', compact('cats', 'product', 'comments'));
+    }
+
+    public function comment(){
+        $data = request()->all('user_id', 'email', 'product_id', 'product_name', 'content');
+        Comment::create($data);
+        return redirect()->back();
+    }
+
+    public function del_cmt(Comment $comment){
+        $comment->delete();
+        return redirect()->back();
     }
     
     public function login() {
