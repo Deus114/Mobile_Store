@@ -1,6 +1,6 @@
         </div> 
         <hr>   
-        <footer class="footer mt-auto py-3 bg-light">
+        <footer class="footer mt-auto py-3 bg-light" id="info">
             <div class="container-footer">
                 <div class="row">
                     <div class="col col-sm-2"></div>

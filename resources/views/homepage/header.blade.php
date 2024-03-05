@@ -70,14 +70,14 @@
                 <li class="nav-item active"> <a class="nav-link white" href="{{ route('home') }}">
                   <i class="bi bi-house-fill"></i> Trang chủ</a> 
                 </li>
-                <li class="nav-item"> <a class="nav-link white" href="#">
+                <li class="nav-item"> <a class="nav-link white" href="#info">
                   <i class="bi bi-telephone-fill"></i> Liên hệ</a> 
                 </li>
-                <li class="nav-item"> <a class="nav-link white" href="#">Giới thiệu</a> </li>
+                <li class="nav-item"> <a class="nav-link white" href="#info">Giới thiệu</a> </li>
                 <li class="nav-item"> <a class="nav-link white" href="#">
                   <i class="bi bi-journal-text"></i> Tin tức</a> 
                 </li>
-                <li class="nav-item"> <a class="nav-link white" href="#">
+                <li class="nav-item"> <a class="nav-link white" href="#info">
                   <i class="bi bi-credit-card"></i> Phương thức thanh toán</a> 
                 </li>
               </ul>
