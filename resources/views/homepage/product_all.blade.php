@@ -47,7 +47,7 @@
                     <div class="card col-sm-3">
                         <div>
                             <a href="{{ route('home.detail', $item->id) }}">
-                                <img class="rounded mx-auto d-block prdimg" src="/uploads/products/{{ $item->image }}" style="width:90%">
+                                <img class="rounded mx-auto d-block prdimg-home" src="/uploads/products/{{ $item->image }}" style="width:90%">
                             </a>
                         </div>
                             <a href="{{ route('home.detail', $item->id) }}" class="card-text ellipsis">{{ $item->name }}</a>
