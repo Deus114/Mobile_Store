@@ -23,8 +23,9 @@ class HomeController extends Controller
         $cats = Category::orderBy('name', 'ASC')->get();
         $buys = Product::orderBy('buy', 'DESC')->limit(5)->get();
         $products = Product::orderBy('watch', 'DESC')->limit(8)->get();
+        $newproducts = Product::orderBy('created_at', 'DESC')->limit(6)->get();
         $banners = Banner::orderBy('priority', 'DESC')->get();
-        return view('homepage.home', compact('cats', 'products', 'buys', 'banners'));
+        return view('homepage.home', compact('cats', 'products', 'buys', 'banners', 'newproducts'));
     }
 
     public function detail(Product $product) {

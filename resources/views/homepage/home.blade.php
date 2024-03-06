@@ -63,7 +63,34 @@
                         @endif
                     @endforeach
                 </div>
-            </div> <br>
+            </div> <br></br>
+            <h4>SẢN PHẨM MỚI NHẤT</h4>
+            <div class="row">
+                <div class="newproduct">
+                    @foreach ($newproducts as $item)
+                        @if ($item->status == 1)
+                            <div>
+                                <div>
+                                    <a href="{{ route('home.detail', $item->id) }}">
+                                        <img class="mx-auto d-block prdimg-home" src="/uploads/products/{{ $item->image }}" style="width:60%">
+                                    </a>
+                                </div> <br>
+                                    <a href="{{ route('home.detail', $item->id) }}" ><p class="ellipsis">{{ $item->name }}</p></a>
+                                <div>
+                                    <div class="mgl-1">
+                                        <p class="errtext mgl-2">{{ number_format($item->price) }}đ</p>
+                                        @if (Auth::check())
+                                            <a href="{{ route('usercart.add', $item->id) }}" class="btn btn-primary btn-sm">Thêm giỏ hàng</a>
+                                        @else
+                                            <a href="{{ route('onlinecart.add', $item->id) }}" class="btn btn-primary btn-sm">Thêm giỏ hàng</a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            </div> <br></br>
             <h4>SẢN PHẨM NỔI BẬT</h4>
             @php
                 $count=0;        

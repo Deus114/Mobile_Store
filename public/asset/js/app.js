@@ -7,6 +7,15 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $('.newproduct').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2500,
+      });
+});
+
 function disable() {
     var myDiv = document.getElementById("xclik");
     myDiv.style.display = "none";
