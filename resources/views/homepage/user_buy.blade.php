@@ -1,6 +1,6 @@
 @extends('index')
 @section('content')
-    <a href="{{ route('onlinecart.view') }}" class="non-dec">< Giỏ hàng</a>
+    <a href="{{ route('usercart.view') }}" class="non-dec">< Giỏ hàng</a>
     <br></br>
     <div class="row">
         <div class="col">
