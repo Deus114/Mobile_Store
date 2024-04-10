@@ -56,7 +56,8 @@
                                         <br>
                                         <p>{{ $item->content }}</p>
                                     </div>
-                                    @if ($item->user_id == Auth::user()->id)
+                                    @if (Auth::check() && $item->user_id == Auth::user()->id)
+                                    
                                         <div class="col">
                                             <a href="{{ route('home.del_cmt', $item->id) }}" class="btn btn-sm btn-danger">Xóa</a>
                                         </div>
